@@ -1,0 +1,14 @@
+{
+	"mqtt": {
+		"url": "mqtt://127.0.0.1",
+		"options": {
+			"username": "",
+			"will": {
+				"topic": "hall-pi-ctrl/status",
+				"payload": "offline",
+				"retain": true
+			}
+		},
+		"prefix": "test/lcn/"
+	}
+}
