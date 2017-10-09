@@ -25,7 +25,10 @@ main = function () {
 	mqttClient.on('connect', function () {
 		console.log('mqtt connected');
 		var topics = [];
-		mqttClient.subscribe(['james/lcn/LCN/sensor/0/10/4']);
+		mqttClient.subscribe([
+			'james/lcn/LCN/sensor/0/10/4', // BWM Flur EG
+			'james/lcn/LCN/sensor/0/12/3' // Klingel
+		]);
 		mqttClient.publish(nconf.get('mqtt:options:will:topic'), 'online');
 	});
 
