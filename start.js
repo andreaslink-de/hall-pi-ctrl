@@ -25,21 +25,27 @@ main = function () {
 	mqttClient.on('connect', function () {
 		console.log('mqtt connected');
 		var topics = [];
-		items.forEach(function(item) {
-			topics.push(item.topic);
-		});
 		mqttClient.subscribe(['james/lcn/LCN/sensor/0/10/4']);
 		mqttClient.publish(nconf.get('mqtt:options:will:topic'), 'online');
 	});
 
-	mqttClient.on('message', function (topic, message) {
-		var cmd = 'vcgencmd display_power 0';
-		if (parseInt(message) == 1) {
-			cmd = 'vcgencmd display_power 1';
-		}
+	var switchDisplay = function(power) {
+		var cmd = 'vcgencmd display_power ' + power;
 		exec(cmd, function(error, stdout, stderr) {
-			//
+		//
 		});
+	};
+
+	var switchTimeout;
+	mqttClient.on('message', function (topic, message) {
+		if (parseInt(message) == 1) {
+			clearTimeout(switchTimeout);
+			switchDisplay(1);
+		} else {
+			switchTimeout = setTimeout(function() {
+				switchDisplay(0);
+			}, 30000);	
+		}
 	});
 };
 
