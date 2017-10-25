@@ -3,7 +3,7 @@
     "url": "mqtt://192.168.50.88",
     "options": {
       "username": "domiqtt",
-      "password": "JzDwC8kAmoKBrpZXgAEFsht"
+      "password": "foobar"
     },
     "prefix": "igor/lcn/"
   }
