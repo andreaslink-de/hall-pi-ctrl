@@ -4,9 +4,9 @@ Turns on/off rpi HDMI display on mqtt messages.
 
 # Install
 
-   $ git clone https://github.com/etobi/hall-pi-ctrl.git
-   $ cd hall-pi-ctrl
-   $ npm install
+    git clone https://github.com/etobi/hall-pi-ctrl.git
+    cd hall-pi-ctrl
+    npm install
 
 ## /etc/rc.local
 
